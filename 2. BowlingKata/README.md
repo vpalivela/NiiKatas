@@ -15,4 +15,6 @@ Start with this test. If you are given these 10 frames: "31415390107133238009" t
 Let's introduce the concept of a spare. If a bowler gets a spare (meaning he knocks down all 10 pins in two attempts, in a single frame), his score is doubled for the next roll. If you are given these 10 frames: "91415390107133238009", then the sum looks like the following 9+1(spare detected)+2*(4)+1+5+3+.....+8+0+0+9=73. Keep in mind that a value is considered a spare only if the pins belong to the same frame.
 
 #### Links
+http://content.codersdojo.org/code-kata-catalogue/bowling-game/
+
 http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata
