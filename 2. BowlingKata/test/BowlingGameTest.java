@@ -20,4 +20,13 @@ public class BowlingGameTest {
 
         assertEquals(expectedScore, bowlingGame.calculateScoreFromFrames(frames));
     }
+
+    @Test
+    public void shouldCalculateScoreForTenFramesBySummingDigitsInTheFrame(){
+        String frames = "31415390107133238009";
+        int expected = 63;
+        BowlingGame bowlingGame = new BowlingGame();
+
+        assertEquals(expected, bowlingGame.calculateScoreFromFrames(frames));
+    }
 }
