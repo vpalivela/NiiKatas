@@ -38,7 +38,7 @@ public class BowlingGameTest {
     @Test
     public void shouldDetectSpareInAFrameAndDoubleNextScore(){
         String twoFramesWithASpare = "3721";
-        int expectedScore = 16;
+        int expectedScore = 15;
 
         assertEquals (expectedScore, bowlingGame.calculateScoreFromFrames(twoFramesWithASpare));
     }
