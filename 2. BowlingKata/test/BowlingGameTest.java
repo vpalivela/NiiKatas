@@ -36,9 +36,33 @@ public class BowlingGameTest {
     }
 
     @Test
-    public void shouldDetectSpareInAFrameAndDoubleNextScore(){
+    public void shouldDetectSpareInAFrameAndDoubleNextRollsScore(){
         String twoFramesWithASpare = "3721";
         int expectedScore = 15;
+
+        assertEquals (expectedScore, bowlingGame.calculateScoreFromFrames(twoFramesWithASpare));
+    }
+
+    @Test
+    public void shouldNotDoubleSubsequentRollsScoreIfFrameFollowingASpareIsNotASpare(){
+        String twoFramesWithASpare = "372123";
+        int expectedScore = 20;
+
+        assertEquals (expectedScore, bowlingGame.calculateScoreFromFrames(twoFramesWithASpare));
+    }
+
+    @Test
+    public void shouldDetectStrikeInAFrameAndDoubleNextFramesScore(){
+        String twoFramesWithASpare = "X021";
+        int expectedScore = 16;
+
+        assertEquals (expectedScore, bowlingGame.calculateScoreFromFrames(twoFramesWithASpare));
+    }
+
+    @Test
+    public void shouldNotKeepDoublingSubsequentScoresIfFrameFollowingAStrikeIsNotAStrike(){
+        String twoFramesWithASpare = "X02142";
+        int expectedScore = 22;
 
         assertEquals (expectedScore, bowlingGame.calculateScoreFromFrames(twoFramesWithASpare));
     }
