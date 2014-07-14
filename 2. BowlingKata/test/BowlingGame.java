@@ -4,6 +4,7 @@ public class BowlingGame {
 
     public int calculateScoreFromFrames(String frames) {
         final int SPAREFACTOR = 10;
+        final int NEXTFRAME = 2;
         int finalSumForAllFrames = 0;
         boolean doubleFirstRollOfNextFrame = false;
         boolean doubleBothRollsForNextFrame = false;
@@ -12,10 +13,12 @@ public class BowlingGame {
         int finalSumForFrame;
         int firstRollScore;
         int secondRollScore;
+        char firstRoll;
+        char secondRoll;
         int index = 0;
         while(index < frames.length()){
-            char firstRoll = frames.charAt(index);
-            char secondRoll = frames.charAt(index + 1);
+            firstRoll = frames.charAt(index);
+            secondRoll = frames.charAt(index + 1);
             if (firstRoll == 'X' || secondRoll == 'X'){
                 finalSumForFrame = 10;
                 doubleBothRollsForNextFrame = true;
@@ -37,7 +40,7 @@ public class BowlingGame {
                 doubleBothRollsForNextFrame = false;
             }
             finalSumForAllFrames += finalSumForFrame;
-            index +=2;
+            index += NEXTFRAME;
         }
         return finalSumForAllFrames;
     }
