@@ -1,32 +1,45 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class BowlingGameTest {
+    BowlingGame bowlingGame;
+
+    @Before
+    public void setUp(){
+        bowlingGame = new BowlingGame();
+    }
+
     @Test
     public void shouldHaveScoreOfZeroIfThereAreNoFrames(){
         int expectedScore = 0;
-        String frames = "";
-        BowlingGame bowlingGame = new BowlingGame();
+        String noFrames = "";
 
-        assertEquals(expectedScore, bowlingGame.calculateScoreFromFrames(frames));
+        assertEquals(expectedScore, bowlingGame.calculateScoreFromFrames(noFrames));
     }
 
     @Test
     public void shouldHaveScoreOfFiveForScoresTwoAndThree(){
         int expectedScore = 5;
-        String frames = "23";
-        BowlingGame bowlingGame = new BowlingGame();
+        String oneFrame = "23";
 
-        assertEquals(expectedScore, bowlingGame.calculateScoreFromFrames(frames));
+        assertEquals(expectedScore, bowlingGame.calculateScoreFromFrames(oneFrame));
     }
 
     @Test
     public void shouldCalculateScoreForTenFramesBySummingDigitsInTheFrame(){
-        String frames = "31415390107133238009";
-        int expected = 63;
-        BowlingGame bowlingGame = new BowlingGame();
+        String tenFrames = "31415390107133238009";
+        int expectedScore = 63;
 
-        assertEquals(expected, bowlingGame.calculateScoreFromFrames(frames));
+        assertEquals(expectedScore, bowlingGame.calculateScoreFromFrames(tenFrames));
+    }
+
+    @Test
+    public void shouldDetectSpareInAFrameAndDoubleNextScore(){
+        String twoFramesWithASpare = "3721";
+        int expectedScore = 16;
+
+        assertEquals (expectedScore, bowlingGame.calculateScoreFromFrames(twoFramesWithASpare));
     }
 }
