@@ -12,9 +12,9 @@ public class BowlingGameTest {
     }
 
     @Test
-    public void shouldHaveScoreOfZeroIfThereAreNoFrames(){
+    public void shouldHaveScoreOfZeroIfFramesAreAllGutters(){
         int expectedScore = 0;
-        String noFrames = "";
+        String noFrames = "00000000000000000000";
 
         assertEquals(expectedScore, bowlingGame.calculateScoreFromFrames(noFrames));
     }
@@ -22,7 +22,7 @@ public class BowlingGameTest {
     @Test
     public void shouldHaveScoreOfFiveForScoresTwoAndThree(){
         int expectedScore = 5;
-        String oneFrame = "23";
+        String oneFrame = "23000000000000000000";
 
         assertEquals(expectedScore, bowlingGame.calculateScoreFromFrames(oneFrame));
     }
@@ -37,7 +37,7 @@ public class BowlingGameTest {
 
     @Test
     public void shouldDetectSpareInAFrameAndDoubleNextRollsScore(){
-        String twoFramesWithASpare = "3721";
+        String twoFramesWithASpare = "37210000000000000000";
         int expectedScore = 15;
 
         assertEquals (expectedScore, bowlingGame.calculateScoreFromFrames(twoFramesWithASpare));
@@ -45,7 +45,7 @@ public class BowlingGameTest {
 
     @Test
     public void shouldNotDoubleSubsequentRollsScoreIfFrameFollowingASpareIsNotASpare(){
-        String twoFramesWithASpare = "372123";
+        String twoFramesWithASpare = "37212300000000000000";
         int expectedScore = 20;
 
         assertEquals (expectedScore, bowlingGame.calculateScoreFromFrames(twoFramesWithASpare));
@@ -53,7 +53,7 @@ public class BowlingGameTest {
 
     @Test
     public void shouldDetectStrikeInAFrameAndDoubleNextFramesScore(){
-        String twoFramesWithASpare = "X021";
+        String twoFramesWithASpare = "X-210000000000000000";
         int expectedScore = 16;
 
         assertEquals (expectedScore, bowlingGame.calculateScoreFromFrames(twoFramesWithASpare));
@@ -61,7 +61,7 @@ public class BowlingGameTest {
 
     @Test
     public void shouldNotKeepDoublingSubsequentScoresIfFrameFollowingAStrikeIsNotAStrike(){
-        String twoFramesWithASpare = "X02142";
+        String twoFramesWithASpare = "X-214200000000000000";
         int expectedScore = 22;
 
         assertEquals (expectedScore, bowlingGame.calculateScoreFromFrames(twoFramesWithASpare));

@@ -10,9 +10,9 @@ public class BowlingGame {
         boolean doubleFirstRollOfNextFrame = false;
         boolean doubleBothRollsForNextFrame = false;
         int finalSumForAllFrames = 0;
-        int finalSumForFrame;
 
         for(int index = 0; index < frames.length(); index+=NEXTFRAME){
+            int finalSumForFrame;
             char firstRoll = frames.charAt(index);
             char secondRoll = frames.charAt(index + 1);
             if (firstRoll == STRIKESCORE || secondRoll == STRIKESCORE){
