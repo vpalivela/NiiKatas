@@ -11,23 +11,17 @@ public class BowlingGame {
         boolean doubleFirstRollOfNextFrame = false;
         boolean doubleBothRollsForNextFrame = false;
 
-        int originalSumForFrame;
         int finalSumForFrame;
-        int firstRollScore;
-        int secondRollScore;
-        char firstRoll;
-        char secondRoll;
-        int index = 0;
-        while(index < frames.length()){
-            firstRoll = frames.charAt(index);
-            secondRoll = frames.charAt(index + 1);
+        for(int index = 0; index < frames.length(); index+=NEXTFRAME){
+            char firstRoll = frames.charAt(index);
+            char secondRoll = frames.charAt(index + 1);
             if (firstRoll == STRIKESCORE || secondRoll == STRIKESCORE){
                 finalSumForFrame = MAXSCOREFORFRAME;
                 doubleBothRollsForNextFrame = true;
             }else{
-                firstRollScore = getNumericValue(firstRoll);
-                secondRollScore = getNumericValue(secondRoll);
-                originalSumForFrame = firstRollScore + secondRollScore;
+                int firstRollScore = getNumericValue(firstRoll);
+                int secondRollScore = getNumericValue(secondRoll);
+                int originalSumForFrame = firstRollScore + secondRollScore;
                 finalSumForFrame = originalSumForFrame;
                 if (doubleFirstRollOfNextFrame){
                     finalSumForFrame += firstRollScore;
@@ -42,7 +36,6 @@ public class BowlingGame {
                 doubleBothRollsForNextFrame = false;
             }
             finalSumForAllFrames += finalSumForFrame;
-            index += NEXTFRAME;
         }
         return finalSumForAllFrames;
     }
