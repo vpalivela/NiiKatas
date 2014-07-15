@@ -1,17 +1,17 @@
 import static java.lang.Character.getNumericValue;
 
 public class BowlingGame {
+    final static int SPAREFACTOR = 10;
+    final static int NEXTFRAME = 2;
+    final static char STRIKESCORE = 'X';
+    final static int MAXSCOREFORFRAME = 10;
 
     public int calculateScoreFromFrames(String frames) {
-        final int SPAREFACTOR = 10;
-        final int NEXTFRAME = 2;
-        final char STRIKESCORE = 'X';
-        final int MAXSCOREFORFRAME = 10;
-        int finalSumForAllFrames = 0;
         boolean doubleFirstRollOfNextFrame = false;
         boolean doubleBothRollsForNextFrame = false;
-
+        int finalSumForAllFrames = 0;
         int finalSumForFrame;
+
         for(int index = 0; index < frames.length(); index+=NEXTFRAME){
             char firstRoll = frames.charAt(index);
             char secondRoll = frames.charAt(index + 1);
